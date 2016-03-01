@@ -1,0 +1,322 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A262E3F31C84CC7800250AC5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A262E3F21C84CC7800250AC5 /* DetailViewController.swift */; };
+		A2A407D31C63F7780058F0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A407D21C63F7780058F0CE /* AppDelegate.swift */; };
+		A2A407D81C63F7780058F0CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A407D61C63F7780058F0CE /* Main.storyboard */; };
+		A2A407DB1C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2A407D91C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodeld */; };
+		A2A407DD1C63F7780058F0CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2A407DC1C63F7780058F0CE /* Assets.xcassets */; };
+		A2A407E01C63F7780058F0CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A407DE1C63F7780058F0CE /* LaunchScreen.storyboard */; };
+		A2A407E81C64017E0058F0CE /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A407E71C64017E0058F0CE /* TableViewController.swift */; };
+		A2A407EA1C6402150058F0CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A407E91C6402150058F0CE /* ViewController.swift */; };
+		A2A407EC1C6407BD0058F0CE /* Book Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A2A407EB1C6407BD0058F0CE /* Book Background.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A262E3F21C84CC7800250AC5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
+		A2A407CF1C63F7780058F0CE /* ISBN(Vista Jerárquica).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISBN(Vista Jerárquica).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2A407D21C63F7780058F0CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A2A407D71C63F7780058F0CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A2A407DA1C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ISBN_Vista_Jera_rquica_.xcdatamodel; sourceTree = "<group>"; };
+		A2A407DC1C63F7780058F0CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A2A407DF1C63F7780058F0CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A2A407E11C63F7780058F0CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2A407E71C64017E0058F0CE /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
+		A2A407E91C6402150058F0CE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
+		A2A407EB1C6407BD0058F0CE /* Book Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Book Background.jpg"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2A407CC1C63F7780058F0CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A2A407C61C63F7780058F0CE = {
+			isa = PBXGroup;
+			children = (
+				A2A407D11C63F7780058F0CE /* ISBN(Vista Jerárquica) */,
+				A2A407D01C63F7780058F0CE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A2A407D01C63F7780058F0CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2A407CF1C63F7780058F0CE /* ISBN(Vista Jerárquica).app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A2A407D11C63F7780058F0CE /* ISBN(Vista Jerárquica) */ = {
+			isa = PBXGroup;
+			children = (
+				A2A407D21C63F7780058F0CE /* AppDelegate.swift */,
+				A2A407E91C6402150058F0CE /* ViewController.swift */,
+				A2A407E71C64017E0058F0CE /* TableViewController.swift */,
+				A262E3F21C84CC7800250AC5 /* DetailViewController.swift */,
+				A2A407D61C63F7780058F0CE /* Main.storyboard */,
+				A2A407DC1C63F7780058F0CE /* Assets.xcassets */,
+				A2A407DE1C63F7780058F0CE /* LaunchScreen.storyboard */,
+				A2A407EB1C6407BD0058F0CE /* Book Background.jpg */,
+				A2A407E11C63F7780058F0CE /* Info.plist */,
+				A2A407D91C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodeld */,
+			);
+			path = "ISBN(Vista Jerárquica)";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A2A407CE1C63F7780058F0CE /* ISBN(Vista Jerárquica) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2A407E41C63F7780058F0CE /* Build configuration list for PBXNativeTarget "ISBN(Vista Jerárquica)" */;
+			buildPhases = (
+				A2A407CB1C63F7780058F0CE /* Sources */,
+				A2A407CC1C63F7780058F0CE /* Frameworks */,
+				A2A407CD1C63F7780058F0CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ISBN(Vista Jerárquica)";
+			productName = "ISBN(Vista Jerárquica)";
+			productReference = A2A407CF1C63F7780058F0CE /* ISBN(Vista Jerárquica).app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A2A407C71C63F7780058F0CE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Mateo Villgomez";
+				TargetAttributes = {
+					A2A407CE1C63F7780058F0CE = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 58U777E9MW;
+					};
+				};
+			};
+			buildConfigurationList = A2A407CA1C63F7780058F0CE /* Build configuration list for PBXProject "ISBN(Vista Jerárquica)" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A2A407C61C63F7780058F0CE;
+			productRefGroup = A2A407D01C63F7780058F0CE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2A407CE1C63F7780058F0CE /* ISBN(Vista Jerárquica) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2A407CD1C63F7780058F0CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2A407E01C63F7780058F0CE /* LaunchScreen.storyboard in Resources */,
+				A2A407EC1C6407BD0058F0CE /* Book Background.jpg in Resources */,
+				A2A407DD1C63F7780058F0CE /* Assets.xcassets in Resources */,
+				A2A407D81C63F7780058F0CE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2A407CB1C63F7780058F0CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2A407D31C63F7780058F0CE /* AppDelegate.swift in Sources */,
+				A2A407E81C64017E0058F0CE /* TableViewController.swift in Sources */,
+				A262E3F31C84CC7800250AC5 /* DetailViewController.swift in Sources */,
+				A2A407EA1C6402150058F0CE /* ViewController.swift in Sources */,
+				A2A407DB1C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A2A407D61C63F7780058F0CE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2A407D71C63F7780058F0CE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A2A407DE1C63F7780058F0CE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2A407DF1C63F7780058F0CE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A2A407E21C63F7780058F0CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A2A407E31C63F7780058F0CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A2A407E51C63F7780058F0CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "ISBN(Vista Jerárquica)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Maniapps.ISBN-Vista-Jera-rquica-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A2A407E61C63F7780058F0CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "ISBN(Vista Jerárquica)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Maniapps.ISBN-Vista-Jera-rquica-";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A2A407CA1C63F7780058F0CE /* Build configuration list for PBXProject "ISBN(Vista Jerárquica)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2A407E21C63F7780058F0CE /* Debug */,
+				A2A407E31C63F7780058F0CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2A407E41C63F7780058F0CE /* Build configuration list for PBXNativeTarget "ISBN(Vista Jerárquica)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2A407E51C63F7780058F0CE /* Debug */,
+				A2A407E61C63F7780058F0CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A2A407D91C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A2A407DA1C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodel */,
+			);
+			currentVersion = A2A407DA1C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodel */;
+			path = ISBN_Vista_Jera_rquica_.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A2A407C71C63F7780058F0CE /* Project object */;
+}
