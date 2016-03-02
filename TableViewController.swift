@@ -98,9 +98,14 @@ class TableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let destination = segue.destinationViewController as? DetailViewController {
-                let path = tableView.indexPathForSelectedRow
-                let cell = tableView.cellForRowAtIndexPath(path!)
-                destination.test = (cell?.textLabel?.text!)!
+                let path = self.tableView.indexPathForSelectedRow?.row
+                let arr = datosLibros[path!]
+                destination.titleBook = arr.titles
+                destination.author = arr.authors
+               
+                //let arr1 = imagenesLibros[path!]
+                //destination.image = arr1.image
+                
             }
         }
     }

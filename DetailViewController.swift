@@ -16,20 +16,18 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var bookImage: UIImageView!
     
-    var test = ""
-    var test1 = ""
+    var titleBook: String = ""
+    var author: String = ""
+    var image: String?
     
-    func configureView() {
-        
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureView()
-        bookTitle.text = test
-        print(test)
-        if test == bookTitle {
-            authors.text = datosLibros[0].authors
-            
+        self.bookTitle.text = titleBook
+        self.authors.text = "Author/s:\(author)"
+        if (image != nil) {
+            let imageUrl = NSURL(string: image!)
+            let imageData = NSData(contentsOfURL: imageUrl!)
+            self.bookImage.image = UIImage(data: imageData!)
         }
     }
 

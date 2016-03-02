@@ -10,16 +10,24 @@ import UIKit
 
 var datosLibros = [savedData]()
 
+var imagenesLibros = [imagesData]()
+
 struct savedData {
     
     var titles: String
     var authors: String
     
     init(titles: String, authors: String) {
-        
         self.titles = titles
         self.authors = authors
-        
+    }
+}
+struct imagesData {
+    
+    var image: String
+    
+    init(image: String) {
+        self.image = image
     }
 }
 
@@ -90,6 +98,8 @@ class ViewController: UIViewController {
                                         if (imageData != 0) {
                                             if let Image = UIImage(data: imageData!) {
                                                 self.imageView.image = Image
+                                                let savesImage = imagesData(image: imageURLS)
+                                                imagenesLibros.append(savesImage)
                                             }
                                         }
                                         self.imageView.hidden = false
