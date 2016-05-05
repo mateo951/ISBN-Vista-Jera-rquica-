@@ -7,26 +7,23 @@
 //
 
 import UIKit
+import CoreData
 
-var datosLibros = [savedData]()
+var datosLibros = [bookData]()
 
-var imagenesLibros = [imagesData]()
+// var imagenesLibro = [imagesData]()
 
-struct savedData {
+var imageFound = Bool()
+
+struct bookData {
     
-    var titles: String
-    var authors: String
+    var title: String
+    var author: String
+    var image: UIImage
     
-    init(titles: String, authors: String) {
-        self.titles = titles
-        self.authors = authors
-    }
-}
-struct imagesData {
-    
-    var image: String
-    
-    init(image: String) {
+    init(title: String, author: String, image: UIImage) {
+        self.title = title
+        self.author = author
         self.image = image
     }
 }
@@ -36,6 +33,8 @@ class ViewController: UIViewController {
     @IBOutlet var ViewC: UIView!
     
     var wasSuccesfull = false
+    
+    //var context: NSManagedObjectContext? = nil
     
     @IBOutlet weak var textField: UITextField!
     
@@ -47,12 +46,44 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Estableciendo el valor de la variable "contexto"(contexto de CoreData)
+        //self.context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+    }
+
     @IBAction func Search(sender: UITextField) {
         
         textView.text = ""
         authorTextView.text = ""
         errorLabel.text = ""
         imageView.hidden = true
+        /*
+        // COREDATA STORING
+        // Verifying if data is already stored
+        let libroEntidad = NSEntityDescription.entityForName("Libro", inManagedObjectContext: self.context!)
+        let petition = libroEntidad?.managedObjectModel.fetchRequestFromTemplateWithName("petLibro", substitutionVariables: ["isbnLibro" : sender.text!])
+        do {
+            let libroEntidad2 = try self.context?.executeFetchRequest(petition!)
+            if (libroEntidad2?.count > 0) {
+                sender.text = nil
+                return
+            }
+        } catch {}
+         */
+        let (title1, author1, cover1) = (internetSearch(sender.text!))
+        let libro = bookData(title: title1, author: author1, image: cover1)
+        print(libro)
+        datosLibros.append(libro)
+        print(datosLibros)
+    }
+    
+    func internetSearch(termino: String) -> (String, String, UIImage) {
+        
+        var bookTitle = String()
+        var bookAuthor = String()
+        var bookCover = UIImage()
         
         let url = NSURL(string: "https://openlibrary.org/api/books?jscmd=data&format=json&bibkeys=ISBN:" + textField.text! + "")!
         let session = NSURLSession.sharedSession()
@@ -65,30 +96,24 @@ class ViewController: UIViewController {
                 if let data = data {
                     do{
                         let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
-                        
                         if jsonResult!.count > 0 {
                             if let isbn = jsonResult!["ISBN:\(self.textField.text!)"] as? NSDictionary {
                                 if let authors = isbn["authors"] as? [[String: AnyObject]] {
-                                for author in authors {
-                                // Fast Display (Updating UI)
-                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                // Title
-                                let Title = isbn["title"] as! NSString as String
-                                // Adding Titles to (titlesArray)
-                                titlesArray.append(Title)
-                                // Author
-                                let Author = author["name"] as! NSString as String
-                                
-                                self.textView.text = "Titulo del libro: \(Title)"
-                                self.authorTextView.text = "Autor/es: \(Author)"
-                                let SavedData = savedData(titles: Title, authors: Author)
-                                datosLibros.append(SavedData)
-                                    print(datosLibros)
-                                })
-
-                                /* // Another option
-                                    if let title = isbn["title"] as? NSString */
-                                }
+                                    for author in authors {
+                                        // Fast Display (Updating UI)
+                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                            // Title
+                                            let Title = isbn["title"] as! NSString as String
+                                            // Adding Titles to (titlesArray)
+                                            titlesArray.append(Title)
+                                            // Author
+                                            let Author = author["name"] as! NSString as String
+                                            self.textView.text = "Titulo del libro: \(Title)"
+                                            self.authorTextView.text = "Autor/es: \(Author)"
+                                            bookTitle = Title
+                                            bookAuthor = Author
+                                        })
+                                    }
                                 }
                                 if let covers = isbn["cover"] as? NSDictionary {
                                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -96,15 +121,18 @@ class ViewController: UIViewController {
                                         let imageURL = NSURL(string: imageURLS)
                                         let imageData = NSData(contentsOfURL: imageURL!)
                                         if (imageData != 0) {
+                                            imageFound = true
                                             if let Image = UIImage(data: imageData!) {
                                                 self.imageView.image = Image
-                                                let savesImage = imagesData(image: imageURLS)
-                                                imagenesLibros.append(savesImage)
+                                                bookCover = Image
                                             }
                                         }
                                         self.imageView.hidden = false
                                     })
-                                } else { self.imageView.hidden = true
+                                    
+                                } else {
+                                    self.imageView.hidden = true
+                                    imageFound = false
                                 }
                             }
                         }   // Error if the city does not exist or the procces failed
@@ -121,22 +149,6 @@ class ViewController: UIViewController {
             }
         }
         task.resume()
-    }
-    /*
-    let SavedData = savedData(titles: self.busquedaTitulo(sender.text!), authors: self.busquedaAutor(sender.text!),images: self.busquedaImagen(sender.text!))
-    datosLibros.append(SavedData)
-    ViewC.reloadInputViews()
-    
-    sender.text = nil
-    sender.resignFirstResponder()
-*/
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        return (bookTitle, bookAuthor, bookCover)
     }
 }

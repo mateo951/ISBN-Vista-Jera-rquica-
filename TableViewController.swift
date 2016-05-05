@@ -27,13 +27,13 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return titlesArray.count
+        return datosLibros.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-
+        
         cell.textLabel?.text = titlesArray[indexPath.row]
 
         return cell
@@ -44,7 +44,6 @@ class TableViewController: UITableViewController {
     }
     
     func BooksTable(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
         
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
@@ -100,11 +99,17 @@ class TableViewController: UITableViewController {
             if let destination = segue.destinationViewController as? DetailViewController {
                 let path = self.tableView.indexPathForSelectedRow?.row
                 let arr = datosLibros[path!]
-                destination.titleBook = arr.titles
-                destination.author = arr.authors
-               
-                //let arr1 = imagenesLibros[path!]
-                //destination.image = arr1.image
+                destination.titleBook = arr.title
+                destination.author = arr.author
+                destination.image = arr.image
+                /*
+                if imageFound == true {
+                    let arr1 = imagenesLibro[path!]
+                    destination.image = arr1.image
+                } else {
+                    print("No se encontro imagen")
+                }
+                */
                 
             }
         }

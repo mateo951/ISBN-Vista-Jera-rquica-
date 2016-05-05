@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9YP-Ju-jmY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9YP-Ju-jmY">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -74,7 +74,7 @@
                                     <constraint firstAttribute="height" constant="36" id="GtK-ZI-t28"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -96,7 +96,7 @@
                                     <constraint firstAttribute="height" constant="36" id="JNj-VO-eIV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -152,16 +152,16 @@
                                 <exclude reference="uet-Wv-30V"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="zlT-1s-oPO"/>
+                                <exclude reference="1RN-tN-9aO"/>
+                                <exclude reference="E7b-OX-pLo"/>
+                                <exclude reference="8Vv-ff-cEO"/>
+                                <exclude reference="YCx-rH-G77"/>
                                 <exclude reference="2Xk-ME-KjU"/>
                                 <exclude reference="BqC-eo-jUB"/>
                                 <exclude reference="eLK-dG-S6z"/>
-                                <exclude reference="8Vv-ff-cEO"/>
-                                <exclude reference="YCx-rH-G77"/>
-                                <exclude reference="1RN-tN-9aO"/>
-                                <exclude reference="E7b-OX-pLo"/>
                                 <exclude reference="X5D-zW-cXf"/>
                                 <exclude reference="bXc-VQ-8Kk"/>
-                                <exclude reference="zlT-1s-oPO"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -172,16 +172,16 @@
                                 <include reference="uet-Wv-30V"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="zlT-1s-oPO"/>
+                                <include reference="1RN-tN-9aO"/>
+                                <include reference="E7b-OX-pLo"/>
+                                <include reference="8Vv-ff-cEO"/>
+                                <include reference="YCx-rH-G77"/>
                                 <include reference="2Xk-ME-KjU"/>
                                 <include reference="BqC-eo-jUB"/>
                                 <include reference="eLK-dG-S6z"/>
-                                <include reference="8Vv-ff-cEO"/>
-                                <include reference="YCx-rH-G77"/>
-                                <include reference="1RN-tN-9aO"/>
-                                <include reference="E7b-OX-pLo"/>
                                 <include reference="X5D-zW-cXf"/>
                                 <include reference="bXc-VQ-8Kk"/>
-                                <include reference="zlT-1s-oPO"/>
                             </mask>
                         </variation>
                     </view>

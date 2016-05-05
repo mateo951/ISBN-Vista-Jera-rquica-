@@ -16,21 +16,22 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var bookImage: UIImageView!
     
-    var titleBook: String = ""
-    var author: String = ""
-    var image: String?
+    var titleBook = String()
+    var author = String()
+    var image = UIImage()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(titleBook)
+        print(author)
+        print(image)
         self.bookTitle.text = titleBook
         self.authors.text = "Author/s:\(author)"
-        if (image != nil) {
-            let imageUrl = NSURL(string: image!)
-            let imageData = NSData(contentsOfURL: imageUrl!)
-            self.bookImage.image = UIImage(data: imageData!)
-        }
+        self.bookImage.image = image
     }
-
+}
     
 
     /*
@@ -42,5 +43,3 @@ class DetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
