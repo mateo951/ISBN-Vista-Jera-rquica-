@@ -27,9 +27,8 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return datosLibros.count
+        return titlesArray.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
@@ -99,9 +98,15 @@ class TableViewController: UITableViewController {
             if let destination = segue.destinationViewController as? DetailViewController {
                 let path = self.tableView.indexPathForSelectedRow?.row
                 let arr = datosLibros[path!]
-                destination.titleBook = arr.title
-                destination.author = arr.author
-                destination.image = arr.image
+                let arr1 = datosLibros2[path!]
+                if arr.image != nil {
+                    destination.titleBook = arr.title
+                    destination.author = arr.author
+                    destination.image = arr.image!
+                } else {
+                    destination.titleBook = arr1.title
+                    destination.author = arr1.author
+                }
                 /*
                 if imageFound == true {
                     let arr1 = imagenesLibro[path!]

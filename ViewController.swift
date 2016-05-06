@@ -9,23 +9,24 @@
 import UIKit
 import CoreData
 
-var datosLibros = [bookData]()
+var datosLibros = [BookData]()
+var datosLibros2 = [BookDataNoImage]()
 
 // var imagenesLibro = [imagesData]()
 
 var imageFound = Bool()
 
-struct bookData {
+struct BookData {
     
     var title: String
     var author: String
-    var image: UIImage
+    var image: UIImage?
+}
+
+struct BookDataNoImage {
     
-    init(title: String, author: String, image: UIImage) {
-        self.title = title
-        self.author = author
-        self.image = image
-    }
+    var title: String
+    var author: String
 }
 
 class ViewController: UIViewController {
@@ -40,23 +41,16 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var authorTextView: UITextView!
+    @IBOutlet weak var authorLabel: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Estableciendo el valor de la variable "contexto"(contexto de CoreData)
-        //self.context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-        
-    }
 
     @IBAction func Search(sender: UITextField) {
         
-        textView.text = ""
-        authorTextView.text = ""
+        titleLabel.text = ""
+        authorLabel.text = ""
         errorLabel.text = ""
         imageView.hidden = true
         /*
@@ -72,83 +66,141 @@ class ViewController: UIViewController {
             }
         } catch {}
          */
-        let (title1, author1, cover1) = (internetSearch(sender.text!))
-        let libro = bookData(title: title1, author: author1, image: cover1)
-        print(libro)
-        datosLibros.append(libro)
-        print(datosLibros)
+        let dataRetrived = (internetSearch(sender.text!))
+        if dataRetrived != nil {
+            let (title1, author1, cover1) = dataRetrived!
+            let libro = BookData(title: title1, author: author1, image: cover1)
+            datosLibros.append(libro)
+            print(datosLibros)
+        }
     }
     
-    func internetSearch(termino: String) -> (String, String, UIImage) {
+    func internetSearch(termino: String) -> (String, String, UIImage)? {
         
-        var bookTitle = String()
-        var bookAuthor = String()
-        var bookCover = UIImage()
+        var bookTitle: String?
+        var bookAuthor: String?
+        var bookCover: UIImage?
+        var userInput: String = "https://openlibrary.org/api/books?jscmd=data&format=json&bibkeys=ISBN:" + textField.text! + ""
         
-        let url = NSURL(string: "https://openlibrary.org/api/books?jscmd=data&format=json&bibkeys=ISBN:" + textField.text! + "")!
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
+        if let url = NSURL(string: "https://openlibrary.org/api/books?jscmd=data&format=json&bibkeys=ISBN:" + textField.text! + "") {
+            let numbers = NSCharacterSet.decimalDigitCharacterSet()
+            let phrase = userInput
+            let range = phrase.rangeOfCharacterFromSet(numbers)
             
-            if error != nil {
-                self.errorLabel.text = "Libro no Identificado"
-            } else {
-                
-                if let data = data {
+            // Accepting only numbers 
+            if let test = range {
+                if let data = NSData(contentsOfURL: url) {
                     do{
                         let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
+                        
                         if jsonResult!.count > 0 {
                             if let isbn = jsonResult!["ISBN:\(self.textField.text!)"] as? NSDictionary {
-                                if let authors = isbn["authors"] as? [[String: AnyObject]] {
-                                    for author in authors {
-                                        // Fast Display (Updating UI)
-                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                if let covers = isbn["cover"] as? NSDictionary {
+                                    let imageURLS = covers["medium"] as! NSString as String
+                                    let imageURL = NSURL(string: imageURLS)
+                                    let imageData = NSData(contentsOfURL: imageURL!)
+                                    if (imageData != 0) {
+                                        imageFound = true
+                                        if let Image = UIImage(data: imageData!) {
+                                            self.imageView.image = Image
+                                            self.imageView.hidden = false
+                                            bookCover = Image
+                                        }
+                                    } else {
+                                        self.imageView.hidden = true
+                                        imageFound = false
+                                        print("No se encontro Imagen")
+                                    }
+                                    if let authors = isbn["authors"] as? [[String: AnyObject]] {
+                                        for author in authors {
                                             // Title
                                             let Title = isbn["title"] as! NSString as String
-                                            // Adding Titles to (titlesArray)
                                             titlesArray.append(Title)
                                             // Author
                                             let Author = author["name"] as! NSString as String
-                                            self.textView.text = "Titulo del libro: \(Title)"
-                                            self.authorTextView.text = "Autor/es: \(Author)"
+                                            self.titleLabel.text = "Titulo del libro: \(Title)"
+                                            self.authorLabel.text = "Autor/es: \(Author)"
                                             bookTitle = Title
                                             bookAuthor = Author
-                                        })
-                                    }
-                                }
-                                if let covers = isbn["cover"] as? NSDictionary {
-                                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                        let imageURLS = covers["medium"] as! NSString as String
-                                        let imageURL = NSURL(string: imageURLS)
-                                        let imageData = NSData(contentsOfURL: imageURL!)
-                                        if (imageData != 0) {
-                                            imageFound = true
-                                            if let Image = UIImage(data: imageData!) {
-                                                self.imageView.image = Image
-                                                bookCover = Image
+                                            if imageFound == false {
+                                                // Funcion(Titulo/Artistas) si no hay IMAGEN
+                                                func noImage() -> (String, String) {
+                                                    return (bookTitle!, bookAuthor!)
+                                                }
+                                                // TEST
+                                                let (titulo, autor) = noImage()
+                                                let libro = BookDataNoImage(title: titulo, author: autor)
+                                                datosLibros2.append(libro)
+                                                print(datosLibros2)
+                                                return nil
                                             }
                                         }
-                                        self.imageView.hidden = false
-                                    })
-                                    
+                                    } else {
+                                        self.errorLabel.text = "Libro no indentificado"
+                                        return nil
+                                    }
                                 } else {
-                                    self.imageView.hidden = true
-                                    imageFound = false
+                                    if let authors = isbn["authors"] as? [[String: AnyObject]] {
+                                        for author in authors {
+                                            // Title
+                                            let Title = isbn["title"] as! NSString as String
+                                            titlesArray.append(Title)
+                                            // Author
+                                            let Author = author["name"] as! NSString as String
+                                            self.titleLabel.text = "Titulo del libro: \(Title)"
+                                            self.authorLabel.text = "Autor/es: \(Author)"
+                                            bookTitle = Title
+                                            bookAuthor = Author
+                                            imageFound = false
+                                            print(imageFound)
+                                            if imageFound == false {
+                                                // Funcion(Titulo/Artistas) si no hay IMAGEN
+                                                func noImage() -> (String, String) {
+                                                    return (bookTitle!, bookAuthor!)
+                                                }
+                                                // TEST
+                                                let (titulo, autor) = noImage()
+                                                let libro = BookDataNoImage(title: titulo, author: autor)
+                                                datosLibros2.append(libro)
+                                                print(datosLibros2)
+                                                return nil
+                                            }
+                                        }
+                                    } else {
+                                        self.errorLabel.text = "Libro no encontrado"
+                                        return nil
+                                    }
                                 }
-                            }
-                        }   // Error if the city does not exist or the procces failed
-                        else if self.wasSuccesfull == false {
-                            // Giving color to the text
-                            self.errorLabel.textColor = UIColor(colorLiteralRed: 185, green: 158, blue: 115, alpha: 1)
-                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            } else if self.wasSuccesfull == false {
+                                self.errorLabel.textColor = UIColor(colorLiteralRed: 185, green: 158, blue: 115, alpha: 1)
                                 self.errorLabel.text = "No se encontró la información - Inténtelo de nuevo"
-                            })
+                            }
                         }
                     } catch {
+                        self.errorLabel.text = "Por favor, ingrese datos validos!"
+                        return nil
                     }
+                } else {
+                    self.errorLabel.text = "Por favor, ingrese datos validos!"
+                    return nil
                 }
+            } else {
+                print("")
+                self.errorLabel.text = "Por favor , ingrese datos validos"
+                return nil
             }
+        } else {
+            self.errorLabel.text = "Por favor, ingrese datos validos!"
+            return nil
         }
-        task.resume()
-        return (bookTitle, bookAuthor, bookCover)
+        print(titlesArray)
+        return (bookTitle!, bookAuthor!, bookCover!)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Estableciendo el valor de la variable "contexto"(contexto de CoreData)
+        //self.context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
     }
 }

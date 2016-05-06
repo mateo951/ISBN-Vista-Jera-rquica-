@@ -16,19 +16,16 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var bookImage: UIImageView!
     
-    var titleBook = String()
-    var author = String()
-    var image = UIImage()
+    var titleBook: String?
+    var author: String?
+    var image: UIImage?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(titleBook)
-        print(author)
-        print(image)
-        self.bookTitle.text = titleBook
-        self.authors.text = "Author/s:\(author)"
+        self.bookTitle.text = "Titulo: \(titleBook!)"
+        self.authors.text = "Autor:\(author!)"
         self.bookImage.image = image
     }
 }
