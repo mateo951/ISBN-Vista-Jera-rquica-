@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A21592891D78AC220017F52D /* BookStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21592881D78AC220017F52D /* BookStructure.swift */; };
 		A262E3F31C84CC7800250AC5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A262E3F21C84CC7800250AC5 /* DetailViewController.swift */; };
 		A2A407D31C63F7780058F0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A407D21C63F7780058F0CE /* AppDelegate.swift */; };
 		A2A407D81C63F7780058F0CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A407D61C63F7780058F0CE /* Main.storyboard */; };
@@ -14,11 +15,12 @@
 		A2A407DD1C63F7780058F0CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2A407DC1C63F7780058F0CE /* Assets.xcassets */; };
 		A2A407E01C63F7780058F0CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A407DE1C63F7780058F0CE /* LaunchScreen.storyboard */; };
 		A2A407E81C64017E0058F0CE /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A407E71C64017E0058F0CE /* TableViewController.swift */; };
-		A2A407EA1C6402150058F0CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A407E91C6402150058F0CE /* ViewController.swift */; };
+		A2A407EA1C6402150058F0CE /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A407E91C6402150058F0CE /* BookSearchViewController.swift */; };
 		A2A407EC1C6407BD0058F0CE /* Book Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A2A407EB1C6407BD0058F0CE /* Book Background.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A21592881D78AC220017F52D /* BookStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookStructure.swift; sourceTree = "<group>"; };
 		A262E3F21C84CC7800250AC5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DetailViewController.swift; path = ../DetailViewController.swift; sourceTree = "<group>"; };
 		A2A407CF1C63F7780058F0CE /* ISBN(Vista Jerárquica).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ISBN(Vista Jerárquica).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2A407D21C63F7780058F0CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -28,7 +30,7 @@
 		A2A407DF1C63F7780058F0CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2A407E11C63F7780058F0CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2A407E71C64017E0058F0CE /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewController.swift; path = ../TableViewController.swift; sourceTree = "<group>"; };
-		A2A407E91C6402150058F0CE /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
+		A2A407E91C6402150058F0CE /* BookSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookSearchViewController.swift; path = ../BookSearchViewController.swift; sourceTree = "<group>"; };
 		A2A407EB1C6407BD0058F0CE /* Book Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Book Background.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,9 +65,10 @@
 			isa = PBXGroup;
 			children = (
 				A2A407D21C63F7780058F0CE /* AppDelegate.swift */,
-				A2A407E91C6402150058F0CE /* ViewController.swift */,
 				A2A407E71C64017E0058F0CE /* TableViewController.swift */,
+				A2A407E91C6402150058F0CE /* BookSearchViewController.swift */,
 				A262E3F21C84CC7800250AC5 /* DetailViewController.swift */,
+				A21592881D78AC220017F52D /* BookStructure.swift */,
 				A2A407D61C63F7780058F0CE /* Main.storyboard */,
 				A2A407DC1C63F7780058F0CE /* Assets.xcassets */,
 				A2A407DE1C63F7780058F0CE /* LaunchScreen.storyboard */,
@@ -152,7 +155,8 @@
 				A2A407D31C63F7780058F0CE /* AppDelegate.swift in Sources */,
 				A2A407E81C64017E0058F0CE /* TableViewController.swift in Sources */,
 				A262E3F31C84CC7800250AC5 /* DetailViewController.swift in Sources */,
-				A2A407EA1C6402150058F0CE /* ViewController.swift in Sources */,
+				A2A407EA1C6402150058F0CE /* BookSearchViewController.swift in Sources */,
+				A21592891D78AC220017F52D /* BookStructure.swift in Sources */,
 				A2A407DB1C63F7780058F0CE /* ISBN_Vista_Jera_rquica_.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

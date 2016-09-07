@@ -11,32 +11,23 @@ import UIKit
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var bookTitle: UILabel!
-    
     @IBOutlet weak var authors: UILabel!
-    
     @IBOutlet weak var bookImage: UIImageView!
     
-    var titleBook: String?
-    var author: String?
-    var image: UIImage?
-    
+    var titleBook: String = ""
+    var author: String = ""
+    var imageData: NSData? = nil
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bookTitle.text = "Titulo: \(titleBook!)"
-        self.authors.text = "Autor:\(author!)"
-        self.bookImage.image = image
+        bookTitle.text = "Titulo:   \(titleBook)"
+        authors.text = "Autor:  \(author)"
+        
+        if imageData != nil {
+            let image = UIImage(data: imageData!)
+            bookImage.image = image
+        }
     }
 }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */

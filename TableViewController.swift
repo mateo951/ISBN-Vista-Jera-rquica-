@@ -7,116 +7,56 @@
 //
 
 import UIKit
+import CoreData
 
-var titlesArray = [String]()
+var Libros = [AnyObject]()
 
 class TableViewController: UITableViewController {
     
     @IBOutlet var BooksTable: UITableView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return titlesArray.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        
-        cell.textLabel?.text = titlesArray[indexPath.row]
-
-        return cell
-    }
     
     override func viewDidAppear(animated: Bool) {
-        BooksTable.reloadData()
+        let fetchRequest = NSFetchRequest(entityName: "Libro")
+        do {
+            Libros = try context().executeFetchRequest(fetchRequest)
+        } catch {}
+        self.tableView.reloadData()
     }
-    
-    func BooksTable(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            
-            // Deleting from item from array
-            titlesArray.removeAtIndex(indexPath.row)
-            
-            // Deleting rows from the table view with animation!!!
-            BooksTable.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-        }
-    }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let destination = segue.destinationViewController as? DetailViewController {
                 let path = self.tableView.indexPathForSelectedRow?.row
-                let arr = datosLibros[path!]
-                let arr1 = datosLibros2[path!]
-                if arr.image != nil {
-                    destination.titleBook = arr.title
-                    destination.author = arr.author
-                    destination.image = arr.image!
-                } else {
-                    destination.titleBook = arr1.title
-                    destination.author = arr1.author
+                let arr = Libros[path!]
+                destination.titleBook = arr.valueForKey("nombreLibro")! as! String
+                destination.author = arr.valueForKey("autorLibro")! as! String
+                let test = arr.valueForKey("imagenLibro") as! NSData?
+                if  test != nil {
+                    destination.imageData = arr.valueForKey("imagenLibro")! as? NSData
                 }
-                /*
-                if imageFound == true {
-                    let arr1 = imagenesLibro[path!]
-                    destination.image = arr1.image
-                } else {
-                    print("No se encontro imagen")
-                }
-                */
-                
             }
+        }
+    }
+    // MARK: - Table view data source
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return Libros.count
+    }
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let book = Libros[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        cell.textLabel?.text = book.valueForKey("nombreLibro")! as? String
+        return cell
+    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            // remove the deleted item from the model
+            context().deleteObject(Libros[indexPath.row] as! NSManagedObject)
+            Libros.removeAtIndex(indexPath.row)
+            do {
+                try context().save()
+            } catch {print(error)}
+            // Deleting item from Table View
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
 }
