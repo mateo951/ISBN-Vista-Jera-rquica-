@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
     
     var titleBook: String = ""
     var author: String = ""
-    var imageData: NSData? = nil
+    var imageData: Data? = nil
     
     
     override func viewDidLoad() {
